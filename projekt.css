@@ -1,0 +1,55 @@
+.intLink { cursor: pointer; }
+img.intLink { border: 0; }
+#pasekNarzedzi select { font-size:10px; }
+#src {
+width:700px;
+white-space:normal;
+}
+#editMode label #nextSlide { cursor: pointer; }
+#nextSlide, #previousSlide { cursor: pointer;display:inline; }
+#textBox {
+padding: 0;
+margin: 0;
+min-width: 498px;
+min-height: 200px;
+-webkit-box-shadow: 0 0 50px #c0c0c0;
+-moz-box-shadow: 0 0 50px #c0c0c0;
+box-shadow: 0 0 50px #c0c0c0;
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+border-radius: 20px;
+-moz-background-clip: padding;
+-webkit-background-clip: padding-box;
+background-clip: padding-box;
+display: inline-block;
+height: 500px;
+padding: 20px;
+position: relative;
+vertical-align: top;
+width: 700px;
+text-align:left;
+max-height:500px;
+overflow:hidden;
+}
+body {
+text-align:center;
+}
+.ui-draggable, .ui-resizable, #draggg {
+	border-style:solid;
+	border-width:2px;
+	width:200px;
+	height:100px;
+}
+.ui-close {
+	cursor:pointer;
+	position:absolute;
+z-index: 1001;
+width: 12px;
+height: 12px;
+right: -1px; 
+top: -1px;	
+}
+.divtekst {
+	height:100%;
+	width:100%;
+}
