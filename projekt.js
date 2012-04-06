@@ -1,4 +1,4 @@
-var oDoc, init, format, showSource, saveToFile, slides, slideNo, readfile, slide, createDiv, closeDiv;
+﻿var oDoc, init, format, showSource, saveToFile, slides, slideNo, readfile, slide, createDiv, closeDiv, divNo=0, tekst = 'Tu wpisz swój tekst', divClick, divBlur;
 init = function() {
   oDoc = document.getElementById("textBox");
   if (document.formularz.switchMode.checked) { showSource(true); }
@@ -12,21 +12,30 @@ closeDiv = function(obj) {
 	$("#" + obj.id).parent().remove();
 }
 createDiv = function() {
-	$("#textBox").append("<div id=\"draggg\">asadsa<div onclick=\"closeDiv(this);\" class=\"ui-close ui-icon ui-icon-close\" id=\"lol\"></div></div>");
-	// $("#draggg").resizable().bind('click', function(){
-		// $(this).focus();
-	// });
-	$("#draggg").attr('contentEditable',true);
-	// $("#draggg").draggable().bind('click', function(){
-		 // $(this).focus();
-	// });
-	//$('#draggg').resizable().parent('.ui-wrapper').draggable(); 
-	$("#draggg").resizable().draggable().removeClass("ui-draggable");
-	// $("#draggg").bind("resizestop", function(event, ui) {
-		// $("#draggg").attr('contentEditable',true);
-		// $("#draggg").focus();
-	// });
+	$("#textBox").append("<div class=\"draggg\" id=\"" + divNo + "p\"><div tabindex=\"0\" id=\"" + divNo + "\" onblur=\"divBlur();\" class=\"tekst\">" + tekst +"</div><div class=\"ui-icon ui-icon-arrow-4 ui-drag\" id=\"handle\"></div><div onclick=\"closeDiv(this);\" class=\"ui-close ui-icon ui-icon-close\" id=\"close\"></div></div>");
+	$("#" + divNo).attr('contentEditable',true);
+	$("#" + divNo + "p").resizable().draggable({ handle: "#handle" }).removeClass("ui-draggable");
+	document.getElementById(divNo).addEventListener('click', divClick, true);
+	//document.getElementById(divNo).addEventListener('blur', divBlur ,true);
+	divNo++;
 }
+divClick = function(evt) {
+	if($(this).html() === tekst)
+	{
+		$(this).html('');
+		$(this).focus();
+	}
+	
+}
+
+divBlur = function(evt) {
+	$(".tekst").each(function () {
+		if($(this).text() === "") {
+			$(this).text(tekst);
+		}
+	});
+}
+
 showSource = function(bol) {
   var oContent;
   if (bol) {
@@ -100,5 +109,6 @@ readfile = function (evt) {
 }
 $(document).ready(function() {
 	document.getElementById('plik').addEventListener('change', readfile, false);
+	
 	//createDiv();
 });
